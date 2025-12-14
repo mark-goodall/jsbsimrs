@@ -1,5 +1,7 @@
 # A rust JSBSim interface
 
+[![crates.io](https://img.shields.io/crates/v/jsbsimrs)](https://crates.io/crates/jsbsimrs)
+
 This is a fairly simple barebones interface for JSBSim to allow for connecting a rust app to the JSBSim flight dynamics.
 JSBSim is run as a separate process, following how other software integrate with JSBSim like ardupilot and px4.
 
