@@ -1,0 +1,50 @@
+name: Release to crate.io
+
+on:
+  release:
+    types: [published]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+      - name: Install JSBSim
+        run: sudo apt install -y flightgear
+      - name: Build
+        run: cargo build --release --verbose
+
+      - name: Store
+        uses: actions/upload-artifact@v5
+        with:
+          name: cargo-package-dist
+          path: target/release
+
+  publish-release:
+    runs-on: ubuntu-latest
+
+    needs: build-release
+
+    permissions:
+      id-token: write
+      contents: write
+
+    environment:
+      name: publish
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Download package
+        uses: actions/download-artifact@v6
+        with:
+          name: cargo-package-dist
+          path: target/release
+
+      - uses: katyo/publish-crates@v2
+        with:
+          registry-token: ${{ secrets.CARGO_REGISTRY_TOKEN }}
