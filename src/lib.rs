@@ -38,23 +38,23 @@ use std::process::Stdio;
 /// configuration and override fields as necessary.
 pub struct JSBSimProcessProperties {
     /// The name of the JSBSim executable
-    executable_name: String,
+    pub executable_name: String,
     /// The JSBSim root directory
-    root: PathBuf,
+    pub root: PathBuf,
     /// The aircraft to load on start
-    aircraft: Option<String>,
+    pub aircraft: Option<String>,
     /// The initialization script for the aircraft to run on start
-    init_script: Option<String>,
+    pub init_script: Option<String>,
     /// The script to run on start
-    script: Option<String>,
+    pub script: Option<String>,
     /// Low simulation rates can lead to unstable behavior or FP exceptions in JSBSim
-    simulation_hz: i32,
+    pub simulation_hz: u32,
     /// Run the simulation in a suspended state on start
-    suspend_on_start: bool,
+    pub suspend_on_start: bool,
     /// Run the simulation in real time mode
-    realtime: bool,
+    pub realtime: bool,
     /// The port to connect to JSBSim on
-    port: u16,
+    pub port: u16,
 }
 
 impl Default for JSBSimProcessProperties {
