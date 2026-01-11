@@ -8,4 +8,4 @@ repository = "https://github.com/mark-goodall/jsbsimrs"
 description = "A Rust interface for JSBSim, a flight dynamics model (FDM) used in flight simulators."
 
 [dev-dependencies]
-serial_test = "3.2.0"
+serial_test = "3.3.1"
